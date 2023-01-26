@@ -1,10 +1,17 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from 'redux/operations';
-import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/contacts/operations';
+import { selectContacts } from 'redux/contacts/selectors';
 
-import { Form, Label, Input, Button } from './ContactForm.styled';
+import {
+  Form,
+  Label,
+  Input,
+  Button,
+  Icon,
+  ButtonIcon,
+} from './ContactForm.styled';
 
-export const ContactForm = () => {
+export const ContactForm = ({ onSave }) => {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
@@ -14,11 +21,11 @@ export const ContactForm = () => {
     const {
       elements: {
         name: { value: name },
-        phone: { value: phone },
+        number: { value: number },
       },
     } = event.currentTarget;
 
-    const contact = { name, phone };
+    const contact = { name, number };
 
     const notDuplicationName = contacts.find(contact => contact.name === name);
     notDuplicationName !== undefined
@@ -26,10 +33,14 @@ export const ContactForm = () => {
       : dispatch(addContact(contact));
 
     event.currentTarget.reset();
+    onSave();
   };
 
   return (
     <Form onSubmit={handleSubmit}>
+      <ButtonIcon type="button" onClick={onSave}>
+        <Icon />
+      </ButtonIcon>
       <Label>
         Name
         <Input
@@ -44,7 +55,7 @@ export const ContactForm = () => {
         Number
         <Input
           type="tel"
-          name="phone"
+          name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required

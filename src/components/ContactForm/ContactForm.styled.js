@@ -1,13 +1,10 @@
 import styled from 'styled-components';
+import { HiX } from 'react-icons/hi';
 
 export const Form = styled.form`
-  margin: 20px;
-  padding: 20px;
-  border: 2px solid black;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  max-width: 100%;
+  width: 320px;
 `;
 
 export const Label = styled.label`
@@ -16,24 +13,54 @@ export const Label = styled.label`
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
 `;
 
 export const Input = styled.input`
   width: 100%;
-  padding: 5px;
+  padding: 12px;
+  border-radius: 5px;
 `;
 
 export const Button = styled.button`
-  width: 120px;
-  height: 20px;
-  margin: 0 auto;
-  background-color: #c5d3e0;
+  padding: 8px 16px;
   border-radius: 4px;
+
   border: none;
-  box-shadow: rgb(0 0 0 / 12%) 0px 1px 3px, rgb(0 0 0 / 14%) 0px 1px 1px,
-    rgb(0 0 0 / 20%) 0px 2px 1px;
-  &:hover,
-  &:focus {
-    background-color: #8892b0;
+  color: black;
+  background-color: #fff;
+  box-shadow: 0px 4px 3px -1px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  font-weight: 700;
+  margin: auto;
+  &:hover {
+    box-shadow: none;
+    color: white;
+    background-color: orangered;
   }
+`;
+export const ButtonIcon = styled.button`
+  margin-left: auto;
+  display: flex;
+  padding: 5px 5px;
+  border-radius: 50px;
+  color: orangered;
+  background-color: #fff;
+
+  border: none;
+
+  font-weight: 700;
+  &:hover {
+    box-shadow: none;
+    color: #fff;
+    background-color: orangered;
+    box-shadow: 0px 4px 3px -1px rgba(0, 0, 0, 0.2),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  }
+`;
+export const Icon = styled(HiX)`
+  width: 20px;
+  height: 20px;
 `;
