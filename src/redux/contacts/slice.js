@@ -6,9 +6,6 @@ import {
   editContact,
 } from './operations';
 
-// import { persistReducer } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
-
 const handlePending = state => {
   state.isLoading = true;
 };
