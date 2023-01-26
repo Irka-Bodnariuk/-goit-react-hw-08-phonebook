@@ -20,7 +20,7 @@ export const Filter = () => {
         <Input
           type="text"
           value={filter}
-          placeholder="Find contacts by name"
+          placeholder="Search"
           onChange={changeFilter}
         ></Input>
       </Label>

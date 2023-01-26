@@ -24,6 +24,11 @@ export const Label = styled.label`
 export const Input = styled.input`
   width: 100%;
   padding: 12px;
-  border-radius: 5px;
-  background-color: #ff98471a;
+  outline: none;
+  box-shadow: none;
+  border-bottom: 3px solid #000;
+
+  &:focus {
+    border-bottom: 3px solid #ff4500;
+  }
 `;

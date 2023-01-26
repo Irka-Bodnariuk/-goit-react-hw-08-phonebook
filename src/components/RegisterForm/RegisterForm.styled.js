@@ -16,6 +16,10 @@ export const Input = styled.input`
   padding: 12px;
   border-radius: 5px;
   background-color: #ff98471a;
+  outline: none;
+  &:focus {
+    border: 1px solid #ff4500;
+  }
 `;
 export const Button = styled.button`
   padding: 8px 16px;

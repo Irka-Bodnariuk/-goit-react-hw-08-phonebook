@@ -1,11 +1,12 @@
 import { ContactForm } from 'components/ContactForm/ContactForm';
+import { EditForm } from 'components/EditForm/EditForm';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Modal, Overlay } from './ModalContact.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export const ModalContact = ({ onClose }) => {
+export const ModalContact = ({ onClose, edit, values }) => {
   useEffect(() => {
     window.addEventListener('keydown', clickCloseModal);
     return () => {
@@ -21,7 +22,11 @@ export const ModalContact = ({ onClose }) => {
   return createPortal(
     <Overlay onClick={clickCloseModal}>
       <Modal>
-        <ContactForm onSave={onClose} />
+        {!edit ? (
+          <ContactForm onSave={onClose} />
+        ) : (
+          <EditForm onSave={onClose} values={values} />
+        )}
       </Modal>
     </Overlay>,
     modalRoot
