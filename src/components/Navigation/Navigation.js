@@ -1,13 +1,50 @@
+import { Box, Button, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
-import { StyleLink } from './Navigation.styled';
 
 export const Navigation = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
-    <nav>
-      <StyleLink to="/">Phonebook</StyleLink>
-      {isLoggedIn && <StyleLink to="/contacts">Contacts</StyleLink>}
-    </nav>
+    <Box component="nav" sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+      {!isLoggedIn ? (
+        <Button
+          component={NavLink}
+          to="/"
+          sx={{
+            color: 'inherit',
+            textDecoration: 'none',
+            '&:hover': {
+              color: 'text.secondary',
+            },
+          }}
+        >
+          Phonebook
+        </Button>
+      ) : (
+        <Typography
+          variant="h6"
+          component="span"
+          sx={{ display: { xs: 'none', md: 'inline-block' } }}
+        >
+          Phonebook
+        </Typography>
+      )}
+      {isLoggedIn && (
+        <Button
+          component={NavLink}
+          to="/contacts"
+          sx={{
+            color: 'inherit',
+            textDecoration: 'none',
+            '&:hover': {
+              color: 'text.secondary',
+            },
+          }}
+        >
+          Contacts
+        </Button>
+      )}
+    </Box>
   );
 };

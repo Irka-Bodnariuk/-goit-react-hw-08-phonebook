@@ -1,6 +1,21 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
-import { Button, Form, Input, Label } from './LoginForm.styled';
+import { TextField, Button } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
+const StyledForm = styled('form')({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  '& .MuiTextField-root': {
+    margin: '10px',
+    width: '300px',
+  },
+  '& .MuiButton-root': {
+    margin: '20px',
+  },
+});
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -16,16 +31,12 @@ export const LoginForm = () => {
     form.reset();
   };
   return (
-    <Form onSubmit={handleSubmit} autoComplete="off">
-      <Label>
-        Email
-        <Input type="email" name="email" />
-      </Label>
-      <Label>
-        Password
-        <Input type="password" name="password" />
-      </Label>
-      <Button type="submit">Log In</Button>
-    </Form>
+    <StyledForm onSubmit={handleSubmit} autoComplete="off">
+      <TextField label="Email" type="email" name="email" />
+      <TextField label="Password" type="password" name="password" />
+      <Button type="submit" variant="contained">
+        Log In
+      </Button>
+    </StyledForm>
   );
 };
